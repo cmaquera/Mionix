@@ -11,8 +11,8 @@
     <div class="top_menu">
       <div class="buttons">
         <div class="button close"></div>
-        <div class="button minimize"></div>
-        <div class="button maximize"></div>
+        <!-- <div class="button minimize"></div>
+        <div class="button maximize"></div> -->
       </div>
       <div class="title">Login | Mionix</div>
     </div>
@@ -22,6 +22,7 @@
     <ul class="messages chat"></ul>
 
     <div class="bottom_login clearfix login">
+      <div class="alert alert-warning text-center error" role="alert"></div>
       <div class="name_input_wrapper">
         <input class="name_input" placeholder="Into your user name please..." />
       </div>
@@ -62,7 +63,10 @@
   </div>
 
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.js"   integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA="   crossorigin="anonymous"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>

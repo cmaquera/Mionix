@@ -249,5 +249,26 @@
 		}
 
 		.login {
-			display: block;
+		  display: block;
 		}
+
+		.error {-webkit-
+		  border-radius: 50px;
+		  display: none;
+		  transition: display 2s;
+		  -webkit-transition: display 2s;
+		}
+
+		.show_error {
+		  /*display: none;*/
+		  animation-name: show;
+		  -webkit-animation-name: show;
+		  -webkit-animation-duration: : 2s;
+		  animation-duration: 2s; 
+		}
+
+		@-webkit-keyframes show {
+			from { display: none; }
+			to { display: block; }
+		}
+

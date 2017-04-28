@@ -31,7 +31,19 @@ io.on('connection', (socket) => {
   	io.sockets.emit('newmsg', data);
 
   });
+
+  socket.on('userExit', (data) => {
+    users.splice(users.indexOf(data));
+  });
+
+  socket.on('disconnect', (data) => {
+    console.log(data);
+    console.log('user disconnected');
+  });
+
 });
+
+
 
 http.listen(PORT, () => {
   console.log(`listening on *:${PORT}`);

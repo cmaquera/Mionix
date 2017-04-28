@@ -2,6 +2,10 @@
 			const socket = io();
         	var user;
 
+        	window.onbeforeunload = (e) => {
+				socket.emit('userExit', user);
+			};
+
 			getNameText = () => {
 				var $message_input;
 		        $message_input = $('.name_input');
@@ -19,11 +23,17 @@
 		    	sendName(getNameText());
 		    });
 
-		    socket.on('userExists', (data) => {
-        		// $('#error-container').append(data);
-        		console.log(data);
-          	});
+			$('.close').click( (e) => {
+				$('.login').show();
+		    	$('.title').text('Login | Mionix');
+		    	$('.chat').hide();
+		    	socket.emit('userExit', user);
+		    });
 
+		    socket.on('userExists', (data) => {
+        		$('.error').text(data);
+        		$('.error').show();
+          	});
 			socket.on('userSet', (data) => {
 				user = data.username;
 				$('.login').hide();
@@ -32,17 +42,17 @@
 			});
 
 		    var Message;
-		    Message = function (arg) {
+		    Message = function(arg) {
 		        this.user = arg.user, this.text = arg.text, this.message_side = arg.message_side;
-		        this.draw = function (_this) {
-		            return function () {
+		        this.draw = function(_this) {
+		            return () => {
 		                var $message;
 		                $message = $($('.message_template').clone().html());
 		                $message.addClass(_this.message_side).find('.text').html(_this.text);
 		                $message.addClass(_this.user).find('.avatar').attr({ title: _this.user });
 
 		                $('.messages').append($message);
-		                return setTimeout(function () {
+		                return setTimeout( function() {
 		                    return $message.addClass('appeared');
 		                }, 0);
 		            };
@@ -52,19 +62,19 @@
 		    $(function () {
 		        var getMessageText, message_side, sendMessage;
 		        message_side = 'right';
-		        getMessageText = function () {
+		        getMessageText = () => {
 		            var $message_input;
 		            $message_input = $('.message_input');
 		            return $message_input.val();
 		        };
-		        sendMessage = function (text) {
+		        sendMessage = (text) => {
 		            if (text.trim() === '') {
 		                return;
 		            }
 		            $('.message_input').val('');
 		            socket.emit('msg', {message: text, user: user});		            
 		        };
-		        $('.send_message').click(function (e) {
+		        $('.send_message').click((e) =>{
 		            return sendMessage(getMessageText());           
 		        });
 
@@ -87,7 +97,7 @@
 		        })
 
 
-		        $('.message_input').keyup(function (e) {
+		        $('.message_input').keyup((e) => {
 		            if (e.which === 13) {
 		                return sendMessage(getMessageText());
 		            }
