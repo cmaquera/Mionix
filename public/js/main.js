@@ -31,13 +31,6 @@
 		    	$('.chat').show();
 			});
 
-			// function sendMessage(){
-	  //         var msg = document.getElementById('message').value;
-	  //         if(msg){
-	  //           socket.emit('msg', {message: msg, user: user})
-	  //         }
-	  //       }
-
 		    var Message;
 		    Message = function (arg) {
 		        this.user = arg.user, this.text = arg.text, this.message_side = arg.message_side;
@@ -79,7 +72,9 @@
 		          if(user){
 		            var $messages, message;
 		            $messages = $('.messages');
-		            message_side = message_side ===  'left' ? 'left' : 'right';
+		            if(user === data.user) message_side = 'right';
+		            else message_side = 'left';
+		            	// message_side ===  'left' ? 'left' : 'right';
 		            message = new Message({
 		            	user: data.user,
 		                text: data.message,
@@ -97,18 +92,8 @@
 		                return sendMessage(getMessageText());
 		            }
 		        });
-		        // sendMessage('Hello Philip! :)');
-		        // setTimeout(function () {
-		        //     return sendMessage('Hi Sandy! How are you?');
-		        // }, 1000);
-		        // return setTimeout(function () {
-		        //     return sendMessage('I\'m fine, thank you!');
-		        // }, 2000);
+		       
 		    });
-
-
-
-
 		}.call(this));
 
 

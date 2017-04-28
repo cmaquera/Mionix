@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
   });
   socket.on('msg',(data) => {
   	//Send a message to everyone
-    console.log(data.message);
+    console.log(data.user + ' : ' + data.message);
   	io.sockets.emit('newmsg', data);
 
   });
