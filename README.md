@@ -1,6 +1,6 @@
-# Node.js Hello World Sample
+# Chat Simple | Mionix
 
-This application demonstrates a simple, reusable Node.js web application based on the Express framework.
+This application demonstrates a simple, reusable Node.js cha application based on the Socket.io( Realtime aplication framework ) & Express( Web aplication framework ).
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/nodejs-helloworld)
 
